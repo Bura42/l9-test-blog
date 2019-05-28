@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use AppBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -22,6 +23,7 @@ class UserRegistrationForm extends AbstractType
           ->add('email', EmailType::class)
           ->add('street', TextType::class)
           ->add('house', TextType::class)
+          ->add('blocked', CheckboxType::class)
           ->add('date_of_birth', BirthdayType::class)
           ->add(
             'plainPassword',

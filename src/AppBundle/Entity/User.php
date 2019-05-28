@@ -85,7 +85,7 @@ class User implements UserInterface
     private $confirmed;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default":false})
      */
     private $blocked;
 

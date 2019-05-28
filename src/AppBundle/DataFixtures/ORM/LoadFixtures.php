@@ -26,8 +26,12 @@ class LoadFixtures extends Fixture
         for ($i = 0; $i < 5; $i++) {
             $user = new User();
             $user->setName('user'.$i);
-            $user->setDateOfBirth(new \DateTime('2011-01-01T15:03:01.012345Z'));
             $user->setEmail('user'.$i.'@gmail.com');
+            $user->setDateOfBirth(new \DateTime('2011-01-01T15:03:01.012345Z'));
+            $user->setStreet('street'.$i);
+            $user->setHouse($i);
+            $user->setConfirmed(1);
+            $user->setBlocked(0);
             $user->setPlainPassword('asdasdasd');
             switch ($i) {
                 case 0:
@@ -44,19 +48,22 @@ class LoadFixtures extends Fixture
             $user_address = new User_address();
             $user_address->setCity('city'.$i);
             $user_address->setCountry('country'.$i);
-            $user_address->setHouse($i);
             $user_address->setStreet('street'.$i);
+            $user_address->setHouse($i);
             $user_address->setUser($user);
 
             $manager->persist($user);
             $manager->persist($user_address);
 
-            for ($f = 0; $f < 4; $f++) {
+            for ($f = 0; $f < 2; $f++) {
                 $post = new Post();
-                $post->setTitle('title '.rand(0, 50));
+                $post->setTitle('title '.rand(0, 5));
                 $post->setBody('body '.rand(0, 50));
+                $post->setChecked(1);
+//                $post->setCategory($categories[rand(0, 13)]);
+                $post->setCreated(new \DateTime('2011-01-01T15:03:01.012345Z'));
+
                 $post->setUser($user);
-                $post->setCategory($categories[rand(0, 13)]);
                 $manager->persist($post);
             }
         }
